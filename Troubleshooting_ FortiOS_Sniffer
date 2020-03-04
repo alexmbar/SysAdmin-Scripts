@@ -1,0 +1,13 @@
+# diag sniffer packet internal none 4 3
+
+Donde:
+# diag sniffer packet <interface> <'filter'> <verbose> <count> a
+
+
+Niveles detallados en detalle:
+1: encabezado de impresión de paquetes
+2: encabezado de impresión y datos desde la IP de los paquetes
+3: imprimir encabezado y datos de Ethernet de paquetes
+4: imprimir encabezado de paquetes con nombre de interfaz
+5: imprimir encabezado y datos de IP de paquetes con nombre de interfaz
+6: imprimir encabezado y datos de Ethernet de paquetes con nombre de interfaz
