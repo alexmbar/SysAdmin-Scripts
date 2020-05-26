@@ -1,0 +1,82 @@
+instalaVeean.ps1
+
+
+$workdir = "c:\installer\"
+
+$LicenseFile = "$workdir\Veeamlicense.lic"
+
+$ConfigFile = "$workdir\config.xml"
+
+[Object[]]$List = @(
+#Instalador
+    New-Object -TypeName PSObject -Property @{"File" = "$workdir\Veeam2.exe"; "URL" = ""}
+##Licencia
+    New-Object -TypeName PSObject -Property @{"File" = $LicenseFile; "URL" = ""}
+##Archivo de configuracion
+    New-Object -TypeName PSObject -Property @{"File" = $ConfigFile; "URL" = ""}
+
+)
+
+$VeeamInstallDir = "C:\Program Files\Veeam\Endpoint Backup"
+
+# Valida sie xiste el directorio si no lo crea
+
+If (Test-Path -Path $workdir -PathType Container)
+
+{ Write-Host "$workdir\ already exists" -ForegroundColor Red}
+
+ELSE
+
+{ New-Item -Path $workdir -ItemType directory }
+
+
+# Busca si existe Invoke-Webrequest; si no ejecuta WebClient
+
+
+$List | ForEach-Object {
+
+    if (Get-Command 'Invoke-Webrequest') {
+
+        Invoke-WebRequest $_.URL -OutFile $_.File
+
+    }
+
+    else {
+
+        $WebClient = New-Object System.Net.WebClient
+
+        $webclient.DownloadFile($_.URL, $_.File)
+
+    }
+
+}
+
+
+# Empieza la instalacion
+
+
+Start-Process -FilePath "$workdir\Veeam2.exe" -ArgumentList "/silent /accepteula"
+
+
+# Espera n Segundos para finalizar la instalacion
+
+
+Start-Sleep -s 45
+
+
+#Para el proceso
+
+Stop-Process -Name "Veeam.EndPoint.Tray" -Force -ErrorAction SilentlyContinue
+
+
+#Realiza la importacio de la licencia
+
+Set-Location $VeeamInstallDir
+
+Start-Process Veeam.Agent.Configurator.exe -ArgumentList "-license /f:'$LicenseFile'" 
+
+
+Start-Process Veeam.Agent.Configurator.exe -ArgumentList "-import /f:'$ConfigFile'"
+
+
+Start-Process "$VeeamInstallDir\Veeam.EndPoint.Tray.exe"
