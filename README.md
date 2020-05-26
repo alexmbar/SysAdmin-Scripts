@@ -6,3 +6,6 @@ Archivo .ps1 para evitar la ejecucion de archivos ejecutables de Ramsomware, es 
 
 Troubleshooting_ FortiOS_Sniffer
 Comandos de sniffer de FortiOS para realizar Troubleshooting en FortiOS
+
+install.updateVeeam
+Descarga, instala, configura y agrega licencia de veeam
