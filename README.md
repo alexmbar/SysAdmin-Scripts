@@ -14,6 +14,15 @@ Este repositorio incluye comandos de sniffer de FortiOS que te permitirán reali
 
 El script `install.updateVeeam` automatiza la descarga, instalación, configuración y activación de licencias de Veeam. Simplifica el proceso de gestión de tus copias de seguridad y asegura la protección de tus datos de manera eficiente.
 
+## Centinela.py
+
+Este script en Python es una herramienta eficiente para el monitoreo proactivo del uso de la memoria RAM en entornos Windows. Destaca por su capacidad de envío automático de correos electrónicos de alerta cuando la RAM utilizada excede un umbral predefinido.
+
+**Funcionalidades Destacadas:**
+- Monitoreo en tiempo real de la memoria RAM.
+- Notificaciones por correo electrónico personalizables.
+- Configuración sencilla y adaptabilidad a diferentes entornos.
+
 ¡Esperamos que estos scripts te sean de utilidad en tus tareas de administración de sistemas! 
 
 ## Contribuir
