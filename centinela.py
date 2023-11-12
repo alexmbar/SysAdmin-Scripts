@@ -24,18 +24,18 @@ def send_ram_email():
     # Enviar correo solo si la RAM utilizada supera los 3 GB
     if used_ram_gb > 2.5:
         # Datos para la cuenta de correo
-        correo_emisor = "" #Correo
-        contraseña = "" #Llave del correo
+        correo_emisor = ""  # Correo
+        contraseña = ""  # Llave del correo
 
         # Datos para el correo electrónico
-        correo_destinatario = "amartinez@bluempire.mx" #Destinantario
-        asunto = "" # Asunto del correo
+        correo_destinatario = ""  # Destinatario
+        asunto = ""  # Asunto del correo
         cuerpo = f"""
         Memoria RAM Total: {total_ram_gb:.2f} GB
         Memoria RAM Disponible: {available_ram_gb:.2f} GB
         Memoria RAM Utilizada: {used_ram_gb:.2f} GB
         Porcentaje de RAM Utilizada: {porcentaje_ram}%
-	Te recordamos que este correo fue generado de forma automática, favor de no responder.
+        Te recordamos que este correo fue generado de forma automática, favor de no responder.
         """
 
         # Configuración del servidor SMTP de Gmail
